@@ -23,9 +23,17 @@
         h1 {
             color: #1b5e20;
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             padding-bottom: 10px;
             border-bottom: 3px solid #81c784;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+        }
+        .author {
+            text-align: center;
+            font-style: italic;
+            color: #2e7d32;
+            margin-bottom: 20px;
+            font-size: clamp(0.9rem, 3vw, 1rem);
         }
         .question {
             background-color: #f1f8e9;
@@ -38,25 +46,30 @@
             font-weight: bold;
             color: #2e7d32;
             margin-bottom: 10px;
-            font-size: 1.1em;
+            font-size: clamp(1rem, 3.5vw, 1.2rem);
         }
         .options {
-            margin-left: 20px;
+            margin-left: 10px;
         }
         .option {
             margin-bottom: 10px;
             padding: 8px;
             border-radius: 5px;
             transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
         }
         .option:hover {
             background-color: #c8e6c9;
         }
         input[type="radio"] {
             margin-right: 10px;
+            min-width: 18px;
+            min-height: 18px;
         }
         label {
             cursor: pointer;
+            word-break: break-word;
         }
         .result {
             text-align: center;
@@ -65,18 +78,21 @@
             border-radius: 10px;
             font-weight: bold;
             display: none;
+            font-size: clamp(1rem, 3.5vw, 1.2rem);
         }
         .btn {
             background-color: #4caf50;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1em;
+            font-size: clamp(0.9rem, 3.5vw, 1rem);
             display: block;
             margin: 20px auto;
             transition: background-color 0.3s;
+            width: 80%;
+            max-width: 250px;
         }
         .btn:hover {
             background-color: #388e3c;
@@ -96,7 +112,7 @@
         }
         .frog-icon {
             text-align: center;
-            font-size: 2em;
+            font-size: clamp(2rem, 8vw, 3rem);
             margin: 10px 0;
         }
         .explanation {
@@ -105,7 +121,7 @@
             border-radius: 5px;
             margin-top: 10px;
             display: none;
-            font-size: 0.9em;
+            font-size: clamp(0.8rem, 3vw, 0.9rem);
         }
         .correct {
             background-color: #c8e6c9;
@@ -116,13 +132,42 @@
         .not-answered {
             background-color: #fff9c4;
         }
+        .intro-text {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+        }
+
+        /* Мобильная адаптация */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .quiz-container {
+                padding: 15px;
+            }
+            .question {
+                padding: 12px;
+            }
+            .options {
+                margin-left: 5px;
+            }
+            .option {
+                padding: 6px;
+            }
+            .btn {
+                width: 90%;
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="quiz-container">
         <h1>Викторина: Удивительные земноводные</h1>
+        <div class="author">Автор: Трофимова Александра</div>
         <div class="frog-icon">🐸</div>
-        <p style="text-align: center;">Проверьте свои знания о земноводных! Выберите правильные ответы на 10 вопросов.</p>
+        <p class="intro-text">Проверьте свои знания о земноводных! Выберите правильные ответы на 10 вопросов.</p>
         
         <div class="progress">
             <div class="progress-bar" id="progress"></div>

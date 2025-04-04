@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Викторина: Удивительные земноводные</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #e8f5e9;
+        }
+        .quiz-container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1b5e20;
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #81c784;
+        }
+        .question {
+            background-color: #f1f8e9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .question-number {
+            font-weight: bold;
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .option:hover {
+            background-color: #c8e6c9;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        label {
+            cursor: pointer;
+        }
+        .result {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            display: none;
+        }
+        .btn {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            display: block;
+            margin: 20px auto;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #388e3c;
+        }
+        .progress {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #4caf50;
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.5s;
+        }
+        .frog-icon {
+            text-align: center;
+            font-size: 2em;
+            margin: 10px 0;
+        }
+        .explanation {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none;
+            font-size: 0.9em;
+        }
+        .correct {
+            background-color: #c8e6c9;
+        }
+        .incorrect {
+            background-color: #ffcdd2;
+        }
+        .not-answered {
+            background-color: #fff9c4;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Викторина: Удивительные земноводные</h1>
+        <div class="frog-icon">🐸</div>
+        <p style="text-align: center;">Проверьте свои знания о земноводных! Выберите правильные ответы на 10 вопросов.</p>
+        
+        <div class="progress">
+            <div class="progress-bar" id="progress"></div>
+        </div>
+
+        <form id="quiz-form">
+            <div class="question" id="q1">
+                <div class="question-number">1. Какое из этих животных НЕ относится к земноводным?</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q1" value="a"> Тритон</label>
+                    <label class="option"><input type="radio" name="q1" value="b"> Жаба</label>
+                    <label class="option"><input type="radio" name="q1" value="c"> Крокодил</label>
+                    <label class="option"><input type="radio" name="q1" value="d"> Саламандра</label>
+                </div>
+                <div class="explanation" id="exp1">Правильный ответ: Крокодил. Крокодилы относятся к пресмыкающимся, а не к земноводным.</div>
+            </div>
+
+            <div class="question" id="q2">
+                <div class="question-number">2. Как называется процесс превращения головастика в лягушку?</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q2" value="a"> Осмос</label>
+                    <label class="option"><input type="radio" name="q2" value="b"> Метаморфоз</label>
+                    <label class="option"><input type="radio" name="q2" value="c"> Регенерация</label>
+                    <label class="option"><input type="radio" name="q2" value="d"> Фотосинтез</label>
+                </div>
+                <div class="explanation" id="exp2">Правильный ответ: Метаморфоз. Это сложный процесс превращения личинки во взрослую особь.</div>
+            </div>
+
+            <div class="question" id="q3">
+                <div class="question-number">3. Чем дышат взрослые земноводные?</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q3" value="a"> Только жабрами</label>
+                    <label class="option"><input type="radio" name="q3" value="b"> Только легкими</label>
+                    <label class="option"><input type="radio" name="q3" value="c"> Легкими и кожей</label>
+                    <label class="option"><input type="radio" name="q3" value="d"> Только кожей</label>
+                </div>
+                <div class="explanation" id="exp3">Правильный ответ: Легкими и кожей. Кожное дыхание очень важно для земноводных, особенно в воде.</div>
+            </div>
+
+            <div class="question" id="q4">
+                <div class="question-number">4. Почему земноводных называют "индикаторами" экосистемы?</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q4" value="a"> Они меняют цвет при опасности</label>
+                    <label class="option"><input type="radio" name="q4" value="b"> Они чувствительны к загрязнениям</label>
+                    <label class="option"><input type="radio" name="q4" value="c"> Они предсказывают погоду</label>
+                    <label class="option"><input type="radio" name="q4" value="d"> Они светятся в темноте</label>
+                </div>
+                <div class="explanation" id="exp4">Правильный ответ: Они чувствительны к загрязнениям. Исчезновение земноводных часто сигнализирует о проблемах в экосистеме.</div>
+            </div>
+
+            <div class="question" id="q5">
+                <div class="question-number">5. Какое из этих земноводных является безногим?</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q5" value="a"> Жерлянка</label>
+                    <label class="option"><input type="radio" name="q5" value="b"> Червяга</label>
+                    <label class="option"><input type="radio" name="q5" value="c"> Квакша</label>
+                    <label class="option"><input type="radio" name="q5" value="d"> Тритон</label>
+                </div>
+                <div class="explanation" id="exp5">Правильный ответ: Червяга. Эти земноводные похожи на крупных червей и не имеют конечностей.</div>
+            </div>
+
+            <div class="question" id="q6">
+                <div class="question-number">6. Как называется самая крупная лягушка в мире?</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q6" value="a"> Лягушка-голиаф</label>
+                    <label class="option"><input type="radio" name="q6" value="b"> Лягушка-бык</label>
+                    <label class="option"><input type="radio" name="q6" value="c"> Обыкновенная жаба</label>
+                    <label class="option"><input type="radio" name="q6" value="d"> Древолаз</label>
+                </div>
+                <div class="explanation" id="exp6">Правильный ответ: Лягушка-голиаф. Она может достигать 32 см в длину и весить более 3 кг!</div>
+            </div>
+
+            <div class="question" id="q7">
+                <div class="question-number">7. Какое из этих приспособлений есть у древесных лягушек для жизни на деревьях?</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q7" value="a"> Перепонки между пальцами</label>
+                    <label class="option"><input type="radio" name="q7" value="b"> Присоски на лапах</label>
+                    <label class="option"><input type="radio" name="q7" value="c"> Длинный хвост</label>
+                    <label class="option"><input type="radio" name="q7" value="d"> Твердый панцирь</label>
+                </div>
+                <div class="explanation" id="exp7">Правильный ответ: Присоски на лапах. Они помогают лягушкам удерживаться на вертикальных поверхностях.</div>
+            </div>
+
+            <div class="question" id="q8">
+                <div class="question-number">8. Какую пользу приносят земноводные природе и человеку?</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q8" value="a"> Уничтожают насекомых-вредителей</label>
+                    <label class="option"><input type="radio" name="q8" value="b"> Являются пищей для многих животных</label>
+                    <label class="option"><input type="radio" name="q8" value="c"> Используются в научных исследованиях</label>
+                    <label class="option"><input type="radio" name="q8" value="d"> Все перечисленное</label>
+                </div>
+                <div class="explanation" id="exp8">Правильный ответ: Все перечисленное. Земноводные играют важную роль в экосистемах и науке.</div>
+            </div>
+
+            <div class="question" id="q9">
+                <div class="question-number">9. Почему кожа земноводных всегда влажная?</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q9" value="a"> Для терморегуляции</label>
+                    <label class="option"><input type="radio" name="q9" value="b"> Для кожного дыхания</label>
+                    <label class="option"><input type="radio" name="q9" value="c"> Для защиты от хищников</label>
+                    <label class="option"><input type="radio" name="q9" value="d"> Для привлечения партнера</label>
+                </div>
+                <div class="explanation" id="exp9">Правильный ответ: Для кожного дыхания. Сухая кожа не может эффективно поглощать кислород.</div>
+            </div>
+
+            <div class="question" id="q10">
+                <div class="question-number">10. Какое из этих земноводных может замерзать зимой и оживать весной?</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q10" value="a"> Сибирский углозуб</label>
+                    <label class="option"><input type="radio" name="q10" value="b"> Озерная лягушка</label>
+                    <label class="option"><input type="radio" name="q10" value="c"> Обыкновенная жаба</label>
+                    <label class="option"><input type="radio" name="q10" value="d"> Гребенчатый тритон</label>
+                </div>
+                <div class="explanation" id="exp10">Правильный ответ: Сибирский углозуб. Это удивительное животное может переживать замерзание до -45°C!</div>
+            </div>
+
+            <button type="button" class="btn" id="submit-btn">Проверить ответы</button>
+            <button type="button" class="btn" id="retry-btn" style="display:none;">Попробовать снова</button>
+            
+            <div class="result" id="result"></div>
+        </form>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: "c",
+            q2: "b",
+            q3: "c",
+            q4: "b",
+            q5: "b",
+            q6: "a",
+            q7: "b",
+            q8: "d",
+            q9: "b",
+            q10: "a"
+        };
+
+        document.getElementById('submit-btn').addEventListener('click', checkAnswers);
+        document.getElementById('retry-btn').addEventListener('click', retryQuiz);
+
+        function checkAnswers() {
+            let score = 0;
+            const form = document.getElementById('quiz-form');
+            const resultDiv = document.getElementById('result');
+            const submitBtn = document.getElementById('submit-btn');
+            const retryBtn = document.getElementById('retry-btn');
+
+            // Проверка каждого вопроса
+            for (let i = 1; i <= 10; i++) {
+                const questionName = 'q' + i;
+                const selectedOption = form.querySelector(`input[name="${questionName}"]:checked`);
+                const questionDiv = document.getElementById(questionName);
+                
+                // Показываем объяснение
+                document.getElementById('exp' + i).style.display = 'block';
+                
+                if (!selectedOption) {
+                    questionDiv.classList.add('not-answered');
+                    continue;
+                }
+                
+                if (selectedOption.value === correctAnswers[questionName]) {
+                    score++;
+                    questionDiv.classList.add('correct');
+                } else {
+                    questionDiv.classList.add('incorrect');
+                }
+            }
+
+            // Показываем результат
+            const percentage = (score / 10) * 100;
+            document.getElementById('progress').style.width = percentage + '%';
+            
+            let message = '';
+            if (score === 10) {
+                message = `Поздравляем! Вы набрали ${score} из 10! Вы настоящий эксперт по земноводным! 🏆`;
+            } else if (score >= 7) {
+                message = `Хороший результат! Вы набрали ${score} из 10. Есть немного пробелов в знаниях. 📚`;
+            } else if (score >= 4) {
+                message = `Вы набрали ${score} из 10. Стоит повторить материал о земноводных. 🐸`;
+            } else {
+                message = `Пока слабый результат: ${score} из 10. Рекомендуем изучить тему заново. 🔍`;
+            }
+            
+            resultDiv.innerHTML = message;
+            resultDiv.style.display = 'block';
+            submitBtn.style.display = 'none';
+            retryBtn.style.display = 'block';
+        }
+
+        function retryQuiz() {
+            // Сброс формы
+            document.getElementById('quiz-form').reset();
+            
+            // Скрытие результатов и объяснений
+            document.getElementById('result').style.display = 'none';
+            document.querySelectorAll('.explanation').forEach(el => el.style.display = 'none');
+            
+            // Удаление классов подсветки
+            document.querySelectorAll('.question').forEach(el => {
+                el.classList.remove('correct', 'incorrect', 'not-answered');
+            });
+            
+            // Сброс прогресс-бара
+            document.getElementById('progress').style.width = '0%';
+            
+            // Показ кнопки отправки
+            document.getElementById('submit-btn').style.display = 'block';
+            document.getElementById('retry-btn').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

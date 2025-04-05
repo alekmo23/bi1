@@ -36,29 +36,36 @@
             font-size: clamp(0.9rem, 3vw, 1rem);
         }
         .question {
-            background-color: #f1f8e9;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            position: relative;
-        }
+        background-color: #f1f8e9;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        position: relative;
+		}
         .question-number {
-            font-weight: bold;
-            color: #2e7d32;
-            margin-bottom: 10px;
-            font-size: clamp(1rem, 3.5vw, 1.2rem);
-        }
+        font-weight: bold;
+        color: #2e7d32;
+        margin-bottom: 10px;
+        font-size: clamp(1rem, 3.5vw, 1.2rem);
+		}
         .options {
             margin-left: 10px;
         }
-        .option {
-            margin-bottom: 10px;
-            padding: 8px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            display: flex;
-            align-items: center;
-        }
+        .options {
+        margin-left: 0;
+        padding-left: 0;
+        list-style-type: none;
+		}
+		
+    .option {
+        margin-bottom: 10px;
+        padding: 8px 8px 8px 0; /* Добавил отступ только справа и убрал слева */
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        display: flex;
+        align-items: center;
+        margin-left: 0; /* Убедимся, что нет лишних отступов */
+    }
         .option:hover {
             background-color: #c8e6c9;
         }
